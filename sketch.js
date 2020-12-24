@@ -1,8 +1,13 @@
 let tilemap = {
   src: [
-    [1, 2, 3],
-    [1, 2, 3],
-    [1, 2, 3]
+    [1, 2, 3, 4, 5, 6, 7, 8],
+    [1, 2, 3, 4, 5, 6, 7, 7],
+    [1, 2, 3, 4, 5, 6, 7, 8],
+    [1, 2, 3, 4, 5, 6, 7, 7],
+    [1, 2, 3, 4, 5, 6, 7, 8],
+    [1, 2, 3, 4, 5, 6, 7, 7],
+    [1, 2, 3, 4, 5, 6, 7, 8],
+    [1, 2, 3, 4, 5, 6, 7, 7],
   ],
 }
 
@@ -23,7 +28,7 @@ function draw() {
 
   push();
   scale(resolution);
-  translate(width/2 - offset.x, height/2 - offset.y);
+  translate(canvas.x/2 - offset.x, canvas.y/2 - offset.y);
 
   for(let y = 0; y < tilemap.src.length; y++) {
     for(let x = 0; x < tilemap.src[y].length; x++) {
@@ -60,6 +65,10 @@ function draw() {
  
 }
 
-function mouseWheel() {
-  
+function mouseWheel(event) {
+  let delta = -event.delta * 0.001;
+  resolution += delta;
+
+  canvas.x = width / resolution;
+  canvas.y = height / resolution
 }
