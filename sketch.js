@@ -7,18 +7,24 @@ let tilemap = {
 }
 
 let offset;
+let resolution = 1;
+let canvas;
 
 function setup() {
   createCanvas(800, 800);
   offset = createVector(0, 0);
   tilemap.size = createVector(160, 160);
+  canvas = createVector(width, height);
+  
 }
 
 function draw() {
   background(236, 232, 225);
 
   push();
+  scale(resolution);
   translate(width/2 - offset.x, height/2 - offset.y);
+
   for(let y = 0; y < tilemap.src.length; y++) {
     for(let x = 0; x < tilemap.src[y].length; x++) {
       rect(x * tilemap.size.x, y * tilemap.size.y, tilemap.size.x, tilemap.size.y);
@@ -52,4 +58,8 @@ function draw() {
     offset.y++;
   }
  
+}
+
+function mouseWheel() {
+  
 }
