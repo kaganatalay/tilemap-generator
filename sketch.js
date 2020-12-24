@@ -1,15 +1,9 @@
 let tilemap = {
-  src: [
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [1, 2, 3, 4, 5, 6, 7, 7],
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [1, 2, 3, 4, 5, 6, 7, 7],
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [1, 2, 3, 4, 5, 6, 7, 7],
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [1, 2, 3, 4, 5, 6, 7, 7],
-  ],
-}
+  src: [],
+};
+
+let columns = 15;
+let rows = 15;
 
 let offset;
 let resolution = 1;
@@ -21,6 +15,14 @@ function setup() {
   tilemap.size = createVector(160, 160);
   canvas = createVector(width, height);
   
+  for(let i = 0; i < rows; i++) {
+    let row = [];
+    for(let j = 0; j < columns; j++) {
+      row.push(0);
+    }
+    tilemap.src.push(row);
+  }
+  console.log(tilemap);
 }
 
 function draw() {
